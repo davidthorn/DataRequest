@@ -7,6 +7,8 @@ public enum DataRequestError: Error {
 
 public class DataRequest {
 
+    public static var accessToken: String?
+
     public class func from( url string: String , completion: @escaping (Result<Data>) -> Void ) -> URLSessionTask? {
 
         guard let url = URL(string: string) else { 
@@ -17,8 +19,12 @@ public class DataRequest {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
 
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
 
+        if let token = self.accessToken {
+            request.addValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
         let task = session.dataTask(with: request) { data, response, error in
             
             guard error == nil else {
