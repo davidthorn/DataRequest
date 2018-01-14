@@ -21,6 +21,11 @@ let package = Package(
         .target(
             name: "DataRequest",
             dependencies: []),
+        .target(
+            name: "DataRequestCLI",
+            dependencies: [
+                .target(name: "DataRequest")
+            ]),
         .testTarget(
             name: "DataRequestTests",
             dependencies: ["DataRequest"]),
