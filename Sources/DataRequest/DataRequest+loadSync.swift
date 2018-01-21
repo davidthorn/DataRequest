@@ -10,11 +10,7 @@ extension  DataRequest {
 
         var error: Error? = nil
 
-        let queue = DispatchQueue(label: "davidthorn.dataRequest.load.queue", attributes: .concurrent)
-
-        let group = DispatchGroup()
-
-        group.enter()
+        self.dispatchGroup.enter()
 
         let item = DispatchWorkItem {
 
@@ -30,14 +26,14 @@ extension  DataRequest {
                         
                 }
 
-                group.leave()
+                self.dispatchGroup.leave()
 
             }?.resume()
         }
 
-        queue.async(execute: item)
+        self.dispatchQueue.async(execute: item)
 
-        group.wait()
+        self.dispatchGroup.wait()
 
         guard error == nil , let loadedData = data else {
             return nil
@@ -47,3 +43,4 @@ extension  DataRequest {
     }
     
 }
+ 

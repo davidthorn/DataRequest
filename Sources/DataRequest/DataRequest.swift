@@ -1,4 +1,5 @@
 import Foundation
+import Dispatch
 
 public enum DataRequestError: Error {
     case invalidUrl
@@ -6,6 +7,10 @@ public enum DataRequestError: Error {
 }
 
 public class DataRequest {
+
+    internal static var _dispatchGroup: DispatchGroup?
+
+    internal static var _dispatchQueue: DispatchQueue?
 
     public static var accessToken: String?
 
@@ -17,6 +22,7 @@ public class DataRequest {
         }
 
         let config = URLSessionConfiguration.default
+
         let session = URLSession(configuration: config)
 
         var request = URLRequest(url: url)
@@ -43,5 +49,7 @@ public class DataRequest {
 
         return task
     }
+
+
 }
 
