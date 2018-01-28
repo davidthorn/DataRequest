@@ -13,7 +13,7 @@ public enum DataRequestResult {
     
     case fail(Error)
 
-    var value: Data? {
+    public var value: Data? {
         switch self {
             case .success(let result , _): return result
             default: return nil
