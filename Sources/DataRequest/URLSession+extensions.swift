@@ -31,12 +31,7 @@ extension URLSession {
         }
 
         guard let dataTask = task else {
-<<<<<<< HEAD
-            completionHandler(.fail(DataRequestError.dataTaskNil))
-            return
-=======
             return completionHandler(.fail(DataRequestError.dataTaskNil))
->>>>>>> ed366aa605838101fe06b13d60f5f9f457f8947a
         }
 
         dataTask.resume()
