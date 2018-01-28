@@ -9,6 +9,7 @@ import Foundation
 
 public enum DataRequestResult {
 
+    /// The DataTask was successfull
     case success(Data, URLResponse)
     
     case fail(Error)
