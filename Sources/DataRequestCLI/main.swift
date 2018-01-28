@@ -3,7 +3,7 @@ import Dispatch
 import Foundation
 
 DataRequest.accessToken = "enter token here"
-
+/*
 do {
 
     let data = try DataRequest.sync(url:  "https://api.github.com/users/davidthorn/repos" )
@@ -16,7 +16,7 @@ do {
 
     print(error)
 
-}
+}*/
 /*
 guard let data = DataRequest.loadSync(url: "https://api.github.com/users/davidthorn/repos") else {
     print("no data returned")
