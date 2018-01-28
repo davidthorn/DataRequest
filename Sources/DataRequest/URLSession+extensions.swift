@@ -19,13 +19,11 @@ extension URLSession {
         let task: URLSessionDataTask? = self.dataTask(with: request) { data, response, error in
             
             guard error == nil else {
-                completionHandler(.fail(error!)) 
-                return
+                return completionHandler(.fail(error!)) 
             }
 
             guard let rawData = data, let rawResponse = response else {
-                completionHandler(.fail(DataRequestError.dataNil))
-                return 
+                return completionHandler(.fail(DataRequestError.dataNil))
             }
 
             completionHandler(.success(rawData , rawResponse))
@@ -33,8 +31,7 @@ extension URLSession {
         }
 
         guard let dataTask = task else {
-            completionHandler(.fail(DataRequestError.dataTaskNil))
-            return
+            return completionHandler(.fail(DataRequestError.dataTaskNil))
         }
 
         dataTask.resume()

@@ -9,11 +9,12 @@ import Foundation
 
 public enum DataRequestResult {
 
+    /// The DataTask was successfull
     case success(Data, URLResponse)
     
     case fail(Error)
 
-    var value: Data? {
+    public var value: Data? {
         switch self {
             case .success(let result , _): return result
             default: return nil
